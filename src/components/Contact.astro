@@ -1,0 +1,12 @@
+---
+import { getPageByTitle } from '../lib/drupal.js';
+
+const page = await getPageByTitle('Contact');
+---
+
+<section class="contact">
+    <h2>{page.attributes.title}</h2>
+    {page.attributes.body && (
+        <div set:html={page.attributes.body.value} />
+    )}
+</section>

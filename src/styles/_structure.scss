@@ -1,0 +1,33 @@
+section {
+
+    width: 80vw;
+    margin: 0 auto 5rem auto;
+
+    &:first-of-type {
+        padding-top: 40px;
+    }
+
+    @media screen and (min-width: 540px) {
+        width: 70vw;
+
+        &:first-of-type {
+            padding-top: 60px;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 50vw;
+
+        &:first-of-type {
+            padding-top: 80px;
+        }
+    }
+
+    hr {
+        border: none;
+        background-color: #ccc;
+        height: 1px;
+        margin: 1.5rem 0;
+    }
+
+}

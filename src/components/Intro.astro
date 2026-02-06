@@ -1,0 +1,12 @@
+---
+import { getPageByTitle } from '../lib/drupal.js';
+
+const page = await getPageByTitle('Mark Fairweather');
+---
+
+<section class="intro">
+    <h1>{page.attributes.title}</h1>
+    {page.attributes.body && (
+        <div set:html={page.attributes.body.value} />
+    )}
+</section>

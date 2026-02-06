@@ -1,0 +1,31 @@
+---
+import { getInterestingLinks } from '../lib/drupal.js';
+
+const linksData = await getInterestingLinks();
+const links = linksData.data;
+
+// Helper function to format date as mm.dd.yyyy
+function formatDate(dateString) {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${month}.${day}.${year}`;
+}
+---
+<section class="links">
+    <h2>Interesting Links</h2>
+    <ul class="int-links">
+        {links.map((link) => (
+        <li>
+            <a href={link.attributes.field_link_url.uri} rel="noopener noreferrer">
+                {link.attributes.field_link_text}
+            </a>
+            {link.attributes.field_link_date && (
+                <span>{formatDate(link.attributes.field_link_date)}</span>
+            )}
+        </li>
+        ))}
+    </ul>
+</section>
